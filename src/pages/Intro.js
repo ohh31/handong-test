@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Route, Link } from 'react-router-dom';
 import '../App.css';
 
 class Intro extends React.Component {
@@ -11,10 +11,10 @@ class Intro extends React.Component {
             <span style = {{color: '#FFA200'}} class = "font yellow">어떤 유형</span>
             <span>일까 ?</span>
           </div>
-          
           <div class="content-btn">
-         
+          <Link id= "start" to="/question">
             <span class="btn-text">테스트 시작</span>
+            </Link>
           </div>
         
           <div class = "content-bottom">
