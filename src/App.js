@@ -1,25 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import style from "styled-components";
+import React from 'react';
+class App extends React.Component {
+  render() {
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return <Background>
+      
+    </Background>
 }
+}
+
+ const Background = style.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #302654;
+  background-size: cover;
+`;
 
 export default App;
