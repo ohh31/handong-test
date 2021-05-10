@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import '../App.css';
-
+import ContentBtn from "./components/content_btn.js"
 class Intro extends React.Component {
     render() {
       return <div class = "app">
@@ -11,12 +11,7 @@ class Intro extends React.Component {
             <span style = {{color: '#FFA200'}} class = "font yellow">어떤 유형</span>
             <span>일까 ?</span>
           </div>
-          <div class="content-btn">
-          <Link id= "start" to="/question">
-            <span class="btn-text">테스트 시작</span>
-            </Link>
-          </div>
-        
+          <ContentBtn value = "테스트 시작" path ="/question"></ContentBtn>
           <div class = "content-bottom">
         <img class = "bg-image" src = "/images/bg-image.png"  ></img></div>
         </div> 
@@ -25,4 +20,3 @@ class Intro extends React.Component {
   }
   
   export default Intro;
-  
