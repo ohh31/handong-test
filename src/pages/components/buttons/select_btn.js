@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
+import '../../../App.css';
 
 function SelectBtn ({path, value}){
     const btnStyle = {
