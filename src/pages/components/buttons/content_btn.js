@@ -3,6 +3,7 @@ import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import '../../../App.css';
 
+
 function ContentBtn ({path, value}){
   const btnStyle = {
     borderRadius: "15px",
@@ -14,7 +15,8 @@ function ContentBtn ({path, value}){
     justifyContent: "center",
     textAlign: "center",
     marginBottom: "8px",
-    marginLeft: "24px"
+    marginLeft: "24px",
+    border : "none",
 }
 
 const linkStyle = {
@@ -28,11 +30,12 @@ const btnText = {
   }
 
 return (
-    <div class="content-btn" style = {btnStyle}>
-    <Link style={linkStyle} to={String(path)}>
+  <Link style={linkStyle} to={String(path)}>
+    <button class="content-btn" style = {btnStyle}>
       <span style = {btnText}>{value}</span>
-      </Link>
-    </div>
+    </button>
+    </Link>
+
   
 );
 }
