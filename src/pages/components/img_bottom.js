@@ -9,7 +9,7 @@ function ImgBottom ({imgPath}){
         verticalAlign:"bottom"
     }
     const imgStyle = {
-    width : "700px",
+    // width : "700px",
     height :"450px",
     margin: "0px",
     backgroundSize: "cover"

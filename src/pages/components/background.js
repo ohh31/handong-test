@@ -11,7 +11,8 @@ function Background ({children}){
     overflow: "hidden"
     }
     const bgStyle = {
-        maxWidth: "379px",
+        // maxWidth: "379px",
+        minWidth : "400px",
         maxHeight: "667px",
         background: "#302654",
         paddingBottom:"0px",
