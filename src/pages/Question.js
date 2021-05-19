@@ -3,11 +3,15 @@ import { Route, Link } from 'react-router-dom';
 import '../App.css';
 import SelectBtn from './components/buttons/select_btn.js';
 import Background from "./components/background.js"
+import { CSSTransition } from 'react-transition-group';
 
-function Question(){
+const duration = 300;
+
+
+function Question({history}){
   
   const [data, setData] = useState(0);
-
+  const [showQst, setShowQst] = useState(true);
   const qstDataSet = [
     {
         id : 1,
@@ -51,14 +55,25 @@ function Question(){
   }
 
   return <Background>
-      <div class = "question-text">
+   <CSSTransition
+        in={showQst}
+        appear = {true}
+        timeout={300}
+        classNames="fade"
+       key = {data}
+      ><div>
+<div class = "question-text">
 {qstDataSet[data].question}
 </div>
-<SelectBtn value = {qstDataSet[data].ans1} onChange = {qstDataSet.length-1 === data ? toEnd : onChanges}></SelectBtn>
-<SelectBtn value = {qstDataSet[data].ans2} onChange = {qstDataSet.length-1 === data ? toEnd : onChanges}></SelectBtn>
+<SelectBtn value = {qstDataSet[data].ans1} onChange = {qstDataSet.length-1 === data ? history.push('/result') : onChanges}></SelectBtn>
+<SelectBtn value = {qstDataSet[data].ans2} onChange = {qstDataSet.length-1 === data ? history.push('/result') : onChanges}></SelectBtn>
+</div>
+</CSSTransition>
   </Background>
 } 
 
-
+{/* <Link to="/users">
+          <button>Users</button>
+        </Link> */}
 export default Question;
 

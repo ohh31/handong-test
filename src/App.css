@@ -11,6 +11,19 @@
   margin-left: "24px";
 }
 
+.select-btn :hover{
+  border-radius: "15px";
+  background-color: "#383838";
+  width: "186px";
+  height: "48px";
+  display: "flex";
+  flex-direction: "column";
+  justify-content: "center";
+  text-align: "center";
+  margin-bottom: "8px";
+  margin-left: "24px";
+}
+
 #next {
   text-decoration: "none";
   color: "#383838";
@@ -61,6 +74,68 @@
   font-size: "21px";
 }
 
+.fade-appear {
+  opacity: 0;
+  transform: translate(0,-60px);
+}
+.fade-appear-active {
+  opacity: 1;
+  transition: all 700ms ease-in;
+  transform: translate(0,0px);
+}
+
+.fade-appear-done {
+  transition: all 700ms ease-in;
+  transform: translate(0,0px);
+}
+
+.fade-exit {
+  opacity: 1;
+  transform: translate(0,0);
+
+}
+.fade-exit-active {
+  opacity: 0;
+  transition: all 700ms ease-in;
+  transform: translate(0,50);
+}
+
+
+.move-appear {
+  opacity: 0; 
+  transform: translate(0,0);
+}
+.move-appear-active {
+  opacity: 1; 
+   transition: all 700ms ease-in;
+  animation-name: example;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;  
+}
+.move-appear-done{
+  animation-name: example;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;  
+}
+.move-exit {
+  opacity: 1;
+  transform: translate(0,0);
+}
+.move-exit-active {
+  opacity: 0;
+  transition: all 700ms ease-in;
+  transform: translate(0,10);
+}
+@keyframes example {
+  from{
+    transform: translate(-50px, 0);
+  } to{
+    transform: translate(20px, 0);
+  }
+}
+
 @media (min-width : 375px){
   .bg{
     width : 375px;
@@ -81,27 +156,3 @@
     height : 800px;
   }
 }
-/* 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.IntroTransition-appear{
-  opacity: 0;
-}
- 
-.IntroTransition-appear.IntroTransition-appear-active{
-  opacity: 1;
-  transition: all .5s ease-in-out;
-} */
