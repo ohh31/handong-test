@@ -1,8 +1,6 @@
 import React,{useState} from 'react';
-import { Route, Link } from 'react-router-dom';
 import '../../../App.css';
-
-function SelectBtn ({path, value, onChange}){
+function SelectBtn ({id, value, onChange}){
     
     const btnStyle = {
         borderRadius: "15px",
@@ -12,7 +10,6 @@ function SelectBtn ({path, value, onChange}){
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        textAlign: "center",
         marginBottom: "8px",
         marginLeft: "24px",
         border : "none",
@@ -20,19 +17,18 @@ function SelectBtn ({path, value, onChange}){
     const btnText = {
         fontWeight: "bold",
         fontSize: "21px",
+        textAlign: "center",
       }
-
     const linkStyle = {
             textDecoration: "none",
             color: "#383838"
     }
-    return (
-        // <Link style ={linkStyle} to = {String(path)}>
-        <button className= "select-btn" style = {btnStyle} onClick = {onChange}>
-              <span class="btn-text" style = {btnText}>{value}</span>
-        </button>
-        // </Link>
 
+    return (
+        <input id = {id} className = 'select-btn' type = "button" value = {value} onClick = {onChange}></input>
+        // <button className = 'select-btn' onClick = {onChange} value = {value}>
+        //      <span style = {btnText}>{value}</span>
+        // </button>
     );
 }
 
