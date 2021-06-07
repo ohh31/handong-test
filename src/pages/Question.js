@@ -55,17 +55,55 @@ function Question(){
     decide : 0,
     life : 0,
   });
+  const [result, setResult] = useState({
+    energy: '',
+    info: '',
+    decide : '',
+    life : '',
+  });
 
   const handleOnSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault(event);
+    let resultType = '';
+    let finalResult = '';
+    if(state.energy > 0){
+      resultType = 'e';
+      setResult({energy : resultType});
+    } else{
+      resultType = 'i';
+      setResult({energy : resultType});
+    }
+    if(state.info > 0){
+      resultType = 'n';
+      setResult({info : resultType});
+    } else{
+      resultType = 's';
+      setResult({info : resultType});
+    }
+    if(state.decide > 0){
+      resultType = 't';
+      setResult({decide : resultType});
+    } else{
+      resultType = 'f';
+      setResult({decide : resultType});
+    }
+    if(state.life > 0){
+      resultType = 'p';
+      setResult({life : resultType});
+    } else{
+      resultType = 'j';
+      setResult({life : resultType});    }
+    
+      finalResult = result.energy + result.info + result.decide+ result.life
+    console.log(finalResult);
         history.push({
-      pathname:`/result/${data}`,
-      state
+      pathname:`/result`,
+      state : {result : finalResult}
     });
   };
 
   const handleInputChange = (event) => {
-    event.preventDefault();
+    event.preventDefault(event);
     const value = event.target.id.split("-");
      const type = value[0];
      const ans = value[1];
