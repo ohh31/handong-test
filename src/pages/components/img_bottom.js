@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 
 function ImgBottom ({imgPath}){
     const bottomStyle = {
@@ -16,8 +17,14 @@ function ImgBottom ({imgPath}){
       }
 
     return (
+        <CSSTransition
+        in={true}
+        appear={true}
+        timeout={500}
+        classNames="move"
+      >
         <div class = "content-bottom" style = {bottomStyle}>
-        <img style = {imgStyle} src = {String(imgPath)}></img></div>
+        <img style = {imgStyle} src = {String(imgPath)}></img></div></CSSTransition>
     );
 }
 

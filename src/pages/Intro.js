@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Link } from 'react-router-dom';
 import '../App.css';
 import Background from "./components/background.js"
@@ -7,6 +7,7 @@ import ContentBottom from "./components/img_bottom.js"
 import { CSSTransition } from 'react-transition-group';
 
   function Intro() {
+
     return <Background>
        <CSSTransition
         in={true}
@@ -20,16 +21,8 @@ import { CSSTransition } from 'react-transition-group';
       <span>일까 ?</span>
     </div>
     <ContentBtn value = "테스트 시작" path ="/desc"></ContentBtn></div>
-    </CSSTransition>
-    <CSSTransition
-        in={true}
-        appear={true}
-        timeout={500}
-        classNames="move"
-      >
+    </CSSTransition> 
   <ContentBottom imgPath="/images/bg-image.png"></ContentBottom>
-  </CSSTransition>
- 
   </Background>
   }
 
