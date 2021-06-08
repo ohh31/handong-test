@@ -1,31 +1,30 @@
 
 import Background from "./components/background.js"
-import {useLocation} from "react-router";
-import React, {useState} from 'react';
+import {useLocation} from 'react-router';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-
+import { firestore } from '../firebase';
 
 
 function Result() {
     let location = useLocation();
-     const [resultData, setResultData] = useState({
-        id: '',
-        type: '',
-        count: '',
-    });
+    const [finalResult, setfinalResult] = useState('');
+
+    useEffect(() => {
+        const result = location.state.result;
+        setfinalResult(result);
+        
+      }, []);
 
     function onCall(){
-        axios.get('http://localhost:3001/api').then((Response)=>{
-            console.log(Response.data);
-            setResultData(Response.data);
-        }).catch((Error)=>{
-            console.log(Error);
+        let ref = firestore.collection('Result');
+        ref.doc('fF2LVDgqIHKIjKYbrU6s').get().then(doc => {
+            console.log(doc.data().totalCount);
         })
       };
     
     return <Background>
-        <h2>데이터가져오기</h2>
-        <h3>data : {resultData.type}</h3>
+        <h3>{finalResult}</h3>
         <button onClick={onCall}>가져오기</button>
       
     </Background>
