@@ -1,21 +1,64 @@
-import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useHistory, useLocation } from "react-router";
 import '../App.css';
 import Background from "./components/background.js"
-import ContentBottom from "./components/img_bottom.js"
-import ContentBtn from "./components/buttons/content_btn.js"
+import ContentDesc from "./components/content_desc"
+import { CSSTransition } from 'react-transition-group';
 
 function Desc() {
+  const [isVisible, setIsVisible] = useState(true);
+  const history = useHistory();
+  let location = useLocation();
+  useEffect(() => {
+    setIsVisible(false);
+}, [isVisible]);
+  const btnStyle = {
+    borderRadius: "15px",
+    backgroundColor: "transparent",
+    width: "186px",
+    height: "48px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    marginLeft: "24px",
+    border : "solid white 2px",
+}
+  const btnText = {
+    color : "white",
+    fontWeight: "bold",
+    fontSize: "20px",
+    fontFamily: "Cafe24SsurroundAir",
+    alignSelf : "center"
+  }  
+
+  const linkStyle = {
+    textDecoration: "none",
+    color: "#383838",
+}
+
+async function closeComponent(event){
+  event.preventDefault();
+  await setIsVisible(false);
+  setTimeout(() => {
+      history.push('/question');
+  }, 300);
+}
+
   return <Background>
-  <div class = "desc-text">  
-      <span style = {{color: '#FFA200'}} >
-        mbti 테스트에 진심인   <br></br></span>
-        <span> 컴퓨터공학 학부생과 <br></br>
-        상담심리 학부생이 만든 <br></br>
-        mbti 테스트 입니다</span></div> 
-        <ContentBtn value = "다음" path ="/question"></ContentBtn>
-      <ContentBottom imgPath="/images/bg-image.png"></ContentBottom>
-      </Background>
+   <CSSTransition
+     in={isVisible}
+     appear = {true}
+     timeout={300}
+     classNames= "slide-in"
+    key = {location.pathname}
+    >
+      {isVisible ?<div>
+      <ContentDesc/>
+        <button class="content-btn" style = {btnStyle} onClick={closeComponent}>
+          <span style = {btnText}>진짜 시작</span>
+        </button>
+        </div> : <div></div> }</CSSTransition>
+        </Background>
 }
 
 export default Desc;
