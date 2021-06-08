@@ -55,54 +55,18 @@ function Question(){
     decide : 0,
     life : 0,
   });
-  const [result, setResult] = useState({
-    energy: '',
-    info: '',
-    decide : '',
-    life : '',
-  });
 
-  const handleOnSubmit = (event) => {
+  async function handleOnSubmit(event){
     event.preventDefault(event);
-    let resultType = '';
-    let finalResult = '';
-    if(state.energy > 0){
-      resultType = 'e';
-      setResult({energy : resultType});
-    } else{
-      resultType = 'i';
-      setResult({energy : resultType});
-    }
-    if(state.info > 0){
-      resultType = 'n';
-      setResult({info : resultType});
-    } else{
-      resultType = 's';
-      setResult({info : resultType});
-    }
-    if(state.decide > 0){
-      resultType = 't';
-      setResult({decide : resultType});
-    } else{
-      resultType = 'f';
-      setResult({decide : resultType});
-    }
-    if(state.life > 0){
-      resultType = 'p';
-      setResult({life : resultType});
-    } else{
-      resultType = 'j';
-      setResult({life : resultType});    }
     
-      finalResult = result.energy + result.info + result.decide+ result.life
-    console.log(finalResult);
-        history.push({
-      pathname:`/result`,
-      state : {result : finalResult}
-    });
-  };
+    var result = await getFinalResult();
+    history.push({
+         pathname:`/result`,
+         state : {result : result}
+      });
+  }
 
-  const handleInputChange = (event) => {
+  function handleInputChange (event){
     event.preventDefault(event);
     const value = event.target.id.split("-");
      const type = value[0];
@@ -113,6 +77,54 @@ function Question(){
          }));
     setData(prevNumber => prevNumber + 1);
   };
+
+  async function getFinalResult(){
+    const typeResult = await cvtValueToType();
+    return typeResult;
+  }
+
+  function cvtValueToType(){
+    var cvtType = '';
+    var step;
+    for (step = 0; step < 4; step++) {
+      switch (step) {
+        case 0: //e
+            if(state.energy > 0){
+              cvtType += 'e';
+            } else{
+              cvtType += 'i';
+            }
+          break;
+        case 1: //n
+            if(state.info > 0){
+              cvtType += 'n';
+            } else{
+              cvtType += 's';
+            }
+          break;
+        case 2: //t
+           if(state.decide > 0){
+            cvtType +='t';
+            } else{
+              cvtType +='f';
+            }
+          break;
+        case 3: //p
+            if(state.life > 0){
+              cvtType += 'p';
+            } else{
+              cvtType += 'j';
+            }
+          break;
+        default:
+          console.log(`no data`);
+      }
+    }
+    console.log(cvtType);
+    return cvtType;
+  };
+  
+
 
   return <Background>
    <CSSTransition
@@ -130,7 +142,9 @@ function Question(){
 </div>
 </CSSTransition>
   </Background>
-} 
+
+}
+ 
 
 export default Question;
 
