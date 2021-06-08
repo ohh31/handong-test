@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import { Route, Link } from 'react-router-dom';
 import '../App.css';
 import SelectBtn from './components/buttons/select_btn.js';
 import Background from "./components/background.js"
@@ -61,7 +60,7 @@ function Question(){
     
     var result = await getFinalResult();
     history.push({
-         pathname:`/result`,
+         pathname:`/result/${result}`,
          state : {result : result}
       });
   }
