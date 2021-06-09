@@ -1,4 +1,3 @@
-import ContentBtn from "./buttons/content_btn";
 import { CSSTransition } from 'react-transition-group';
 
 function ContentDesc() {
