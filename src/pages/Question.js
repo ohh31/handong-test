@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import '../App.css';
 import SelectBtn from './components/buttons/select_btn.js';
 import Background from "./components/background.js"
+import ProgressBar from "./components/progress_bar.js"
 import { CSSTransition } from 'react-transition-group';
 import {useHistory} from "react-router";
 
@@ -126,13 +127,14 @@ function Question(){
 
 
   return <Background>
-   <CSSTransition
-        in={showQst}
-        appear = {true}
-        timeout={300}
-        classNames="fade"
-       key = {data}
-      ><div>
+    <ProgressBar index ={data}/>
+ <CSSTransition
+     in={showQst}
+     appear = {true}
+     timeout={500}
+     classNames={showQst===true ? "slide-in" : "slide-out"}
+    key = {data}
+    ><div>
 <div class = "question-text">
 {qstDataSet[data].question}
 </div>
