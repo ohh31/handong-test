@@ -86,7 +86,12 @@ function Question(){
     return cvtType;
   };
   
+  function changeNullToBr(value){
+    return value.split('\n').map( line => {
+      return (<span>{line}<br/></span>)
+    })}
   
+
   return <Background>
     <ProgressBar index ={data}/>
  <CSSTransition
@@ -97,33 +102,16 @@ function Question(){
     key = {data}
     ><div className = "content-container">
         <p class = "question-main-text">
-        {qstDataSet[data].question.split('\n').map( line => {
-                    return (<span>{line}<br/></span>)
-                  })}
+        {changeNullToBr(qstDataSet[data].question)}
         </p>
         <button className="select-btn" id = {qstDataSet[data].type + '-ans1'} className = 'select-btn' 
         onClick =  {qstDataSet.length-1 === data ? handleOnSubmit : handleInputChange}>
-          {qstDataSet[data].ans1.split("\n").map((line) => { 
-                            return (
-                              <span>
-                                {line}
-                                <br />
-                              </span>
-                            );
-                          })}</button>
+         {changeNullToBr(qstDataSet[data].ans1)}</button>
         <button id = {qstDataSet[data].type + '-ans2'} className = 'select-btn' 
         onClick =  {qstDataSet.length-1 === data ? handleOnSubmit : handleInputChange}>
-          {qstDataSet[data].ans2.split("\n").map((line) => { 
-                            return (
-                              <span>
-                                {line}
-                                <br />
-                              </span>
-                            );
-                          })}</button>
+           {changeNullToBr(qstDataSet[data].ans2)}</button>
         </div>
-</CSSTransition>
-  </Background>
+</CSSTransition></Background>
 
 }
  
