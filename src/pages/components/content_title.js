@@ -1,10 +1,10 @@
-import { CSSTransition } from 'react-transition-group';
+import '../../styles/font.css'
 
 function ContentTitle() {
     
-    return  <div class = "content-title" style = {{fontFamily: "Cafe24SsurroundAir"}}>
+    return  <div class = "content-title">
       <span>한동에서<br></br>나는 </span> 
-      <span style = {{color: '#FFA200'}} class = "font yellow">어떤 유형</span>
+      <span class = "hl-text">어떤 유형</span>
       <span>일까 ?</span>
     </div>
 }

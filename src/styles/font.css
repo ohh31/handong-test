@@ -1,0 +1,97 @@
+@font-face {
+    font-family: 'Cafe24SsurroundAir';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Cafe24Ssurround';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+span{
+    color: #FFFFFF;
+}
+
+p{
+    color: #FFFFFF;
+}
+
+.content-title{
+    font-size: 35px;
+    font-weight: bold; 
+    margin-bottom: 68px;
+    margin-left: 24px;
+  }
+  
+  .content-desc-text{
+    padding-top : 20px;
+    font-size: 13px;
+    font-weight: bold;
+  }
+  
+  .desc-main-text{
+    font-size: 20px; 
+    line-height : 140%;
+    padding-bottom : 35px;
+    font-weight: bold; 
+  }
+  
+  .question-main-text{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 24px;
+    line-height: 25px;
+    padding-bottom: 30px;
+    align-self: center;
+  }
+
+  .result-title-text{
+    color : #FFA200;
+    font-weight: bold;
+    font-size: 35px;
+    align-self : center;
+    padding-bottom : 30px;
+    line-height: 40px;
+  }
+
+  .result-desc-title{
+    width : 400px;
+    font-weight: bold;
+    font-size: 15px;
+    align-self : center;
+    line-height: 25px;
+    margin-bottom : 0px;
+
+  }
+  
+  .result-subtitle-text{
+    width : 400px;
+    font-weight: bold;
+    font-size: 15px;
+    align-self : center;
+    line-height: 25px;
+    margin-bottom : 0px;
+    text-align :center;
+  }
+
+
+  .btn-text{
+    font-weight: bold;
+    font-size: 20px;
+    align-self : center;
+  }
+
+  .progress-label-text{
+    padding: 5;
+    font-weight: bold;
+    font-size : 13px;
+    align-self : flex-end;
+    margin-top : 2px;
+  }
+
+  .hl-text{
+    color: #FFA200;
+  }

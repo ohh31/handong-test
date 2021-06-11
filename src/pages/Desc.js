@@ -12,29 +12,6 @@ function Desc() {
   useEffect(() => {
     setIsVisible(false);
 }, [isVisible]);
-  const btnStyle = {
-    borderRadius: "15px",
-    backgroundColor: "transparent",
-    width: "186px",
-    height: "48px",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    marginLeft: "24px",
-    border : "solid white 2px",
-}
-  const btnText = {
-    color : "white",
-    fontWeight: "bold",
-    fontSize: "20px",
-    fontFamily: "Cafe24SsurroundAir",
-    alignSelf : "center"
-  }  
-
-  const linkStyle = {
-    textDecoration: "none",
-    color: "#383838",
-}
 
 async function closeComponent(event){
   event.preventDefault();
@@ -52,12 +29,12 @@ async function closeComponent(event){
      classNames= "slide-in"
     key = {location.pathname}
     >
-      {isVisible ?<div>
+      <div className = "content-container">
       <ContentDesc/>
-        <button class="content-btn" style = {btnStyle} onClick={closeComponent}>
-          <span style = {btnText}>진짜 시작</span>
+        <button className="content-btn" onClick={closeComponent}>
+          <span className="btn-text">진짜 시작</span>
         </button>
-        </div> : <div></div> }</CSSTransition>
+        </div></CSSTransition>
         </Background>
 }
 

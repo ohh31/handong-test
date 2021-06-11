@@ -1,51 +1,13 @@
 import React, {useState} from 'react';
 import '../App.css';
-import SelectBtn from './components/buttons/select_btn.js';
 import Background from "./components/background.js"
 import ProgressBar from "./components/progress_bar.js"
 import { CSSTransition } from 'react-transition-group';
 import {useHistory} from "react-router";
-
-const qstDataSet = [
-  {
-      id : 1,
-      type : "energy",
-      question: "1번 질문입니다",
-      ans1: "대답 1번 입니다",
-      ans2: "대답 2번 입니다",
-  },
-  {
-      id : 2,
-      type : "info",
-      question: "2번 질문입니다",
-      ans1: "대답 1번 입니다",
-      ans2: "대답 2번 입니다",
-  },
-  {
-      id : 3,
-      type : "decide",
-      question: "3번 질문입니다",
-      ans1: "대답 1번 입니다",
-      ans2: "대답 2번 입니다",
-  },
-  {
-      id : 4,
-      type : "life",
-      question: "4번 질문입니다",
-      ans1: "대답 1번 입니다",
-      ans2: "대답 2번 입니다",
-  },
-  {
-      id : 5,
-      type : "life",
-      question: "5번 질문입니다",
-      ans1: "대답 1번 입니다",
-      ans2: "대답 2번 입니다",
-  },
-]
+import QstData from '../data';
 
 function Question(){
-  
+  const qstDataSet = QstData;
   const [data, setData] = useState(0);
   const [showQst, setShowQst] = useState(true);
   const history = useHistory();
@@ -86,7 +48,7 @@ function Question(){
   function cvtValueToType(){
     var cvtType = '';
     var step;
-    for (step = 0; step < 4; step++) {
+    for (step = 0; step < 12; step++) {
       switch (step) {
         case 0: //e
             if(state.energy > 0){
@@ -111,9 +73,9 @@ function Question(){
           break;
         case 3: //p
             if(state.life > 0){
-              cvtType += 'p';
-            } else{
               cvtType += 'j';
+            } else{
+              cvtType += 'p';
             }
           break;
         default:
@@ -124,23 +86,42 @@ function Question(){
     return cvtType;
   };
   
-
-
+  
   return <Background>
     <ProgressBar index ={data}/>
  <CSSTransition
      in={showQst}
      appear = {true}
-     timeout={500}
+     timeout={300}
      classNames={showQst===true ? "slide-in" : "slide-out"}
     key = {data}
-    ><div>
-<div class = "question-text">
-{qstDataSet[data].question}
-</div>
-<SelectBtn id = {qstDataSet[data].type + '-ans1'} value = {qstDataSet[data].ans1} onChange = {qstDataSet.length-1 === data ? handleOnSubmit : handleInputChange}></SelectBtn>
-<SelectBtn id = {qstDataSet[data].type + '-ans2'} value = {qstDataSet[data].ans2} onChange = {qstDataSet.length-1 === data ? handleOnSubmit : handleInputChange}></SelectBtn>
-</div>
+    ><div className = "content-container">
+        <p class = "question-main-text">
+        {qstDataSet[data].question.split('\n').map( line => {
+                    return (<span>{line}<br/></span>)
+                  })}
+        </p>
+        <button className="select-btn" id = {qstDataSet[data].type + '-ans1'} className = 'select-btn' 
+        onClick =  {qstDataSet.length-1 === data ? handleOnSubmit : handleInputChange}>
+          {qstDataSet[data].ans1.split("\n").map((line) => { 
+                            return (
+                              <span>
+                                {line}
+                                <br />
+                              </span>
+                            );
+                          })}</button>
+        <button id = {qstDataSet[data].type + '-ans2'} className = 'select-btn' 
+        onClick =  {qstDataSet.length-1 === data ? handleOnSubmit : handleInputChange}>
+          {qstDataSet[data].ans2.split("\n").map((line) => { 
+                            return (
+                              <span>
+                                {line}
+                                <br />
+                              </span>
+                            );
+                          })}</button>
+        </div>
 </CSSTransition>
   </Background>
 
