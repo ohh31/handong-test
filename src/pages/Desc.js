@@ -9,30 +9,27 @@ function Desc() {
   const [isVisible, setIsVisible] = useState(true);
   const history = useHistory();
   let location = useLocation();
-  useEffect(() => {
-    setIsVisible(false);
-}, [isVisible]);
 
-async function closeComponent(event){
-  event.preventDefault();
-  await setIsVisible(false);
-  setTimeout(() => {
+  useEffect(() => {
+    
+    if(isVisible === false){
+    setTimeout(() => {
       history.push('/question');
   }, 300);
 }
+}, [isVisible]);
 
   return <Background>
    <CSSTransition
      in={isVisible}
      appear = {true}
      timeout={300}
-     classNames= "slide-in"
-    key = {location.pathname}
+    classNames= "slide-in"
     >
       <div className = "content-container">
       <ContentDesc/>
-        <button className="content-btn" onClick={closeComponent}>
-          <span className="btn-text">진짜 시작</span>
+        <button className="content-btn" onClick={() => setIsVisible(false)}>
+        <span className="btn-text">진짜 시작</span>
         </button>
         </div></CSSTransition>
         </Background>

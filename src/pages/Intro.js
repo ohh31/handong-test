@@ -24,7 +24,11 @@ function Intro() {
 
   useEffect(
     () => { 
-      if(isVisible === false){}
+      if(isVisible === false){
+        setTimeout(() => {
+          history.push('/desc');
+      }, 300);
+      }
     }, [isVisible]
 );
 
@@ -40,25 +44,16 @@ function getTotalCount(){
 });
 }
     
-  async function closeComponent(event){
-    event.preventDefault();
-    setIsVisible(false);
-    console.log(isVisible);
-    setTimeout(() => {
-      history.push('/desc');
-  }, 300);
-  }
-
     return <Background>  
        <CSSTransition
      in={isVisible}
      appear = {true}
      timeout={500}
-     classNames={isVisible===true ? "slide-in" : "slide-out"}
+     classNames= "slide-in"
     unmountOnExit
     ><div className = "content-container">
     <ContentTitle/>
-        <button className="content-btn" onClick ={closeComponent}>
+        <button className="content-btn" onClick ={()=> setIsVisible(false)}>
           <span className = "btn-text" >테스트 시작</span>
         </button>
         <span className = "content-desc-text">한동인 {totalCount}명이 테스트 하였습니다</span>
