@@ -4,10 +4,12 @@ import {useLocation, useHistory} from 'react-router';
 import React, {useEffect, useState} from 'react';
 import { firestore } from '../firebase';
 import firebase from 'firebase/app';
-
+import icon1 from '../styles/images/result-match-good.png';
+import icon2 from '../styles/images/result-match-bad.png';
 
 function Result() {
     const history = useHistory();
+    const [isChecked, setChecked] = useState(false);
     const [finalResult, setfinalResult] = useState('');
     const [report, setReport]= useState({});
     let resultRef = firestore.collection('Result');
@@ -41,7 +43,6 @@ function Result() {
             }
     });}
 
-
     function saveResultType(result){
         var fieldName = `type.`+ result;
         resultRef.doc(`fF2LVDgqIHKIjKYbrU6s`).update({
@@ -50,6 +51,7 @@ function Result() {
           });
 
     }
+
 
     useEffect(() => {
         let result = location.state.result;
@@ -65,18 +67,40 @@ function Result() {
       }, [finalResult]);
 
       useEffect(() => {
+        setTimeout(() => {
+        setChecked(true);
+        },500);
       console.log("report");
       }, [report]);
+      
+     
 
     return <Background>
-     {title !== null? <div>
+     {isChecked === false ?  <p>결과 분석 중</p> :
+     <div className="result-main-container">
+        <div className = "result-body-container">
         <p className ="result-subtitle-text">{subtitle}</p>    
         <p className="result-title-text">{title}</p>
-        <span className = "result-desc-title">{body}  </span>
-        <span className = "result-desc-title">평생 밥고할 사이</span>
-        <span className = "result-desc-title">{best}  </span>
-        <span className = "result-desc-title">어짜피 어사될 사이</span>
-        <span className = "result-desc-title">{worst}  </span></div>:<div>결과 분석 중</div>}
+        <span className = "result-desc-text">{body}  </span>
+        </div>
+        <div className = "result-bottom-container">
+        <div className = "result-match-container">
+        <div className = "result-match-wrap">
+        <img src = {icon1} width = "15px"></img>
+        <span className = "result-match-title">평생 밥고할 사이</span>
+        </div>
+        <p className = "result-match-body">{best}</p>
+        </div>
+        <div className = "divider"></div>
+        <div className = "result-match-container">
+        <div className = "result-match-wrap">
+        <img src = {icon2} width = "15px"></img>
+        <span className = "result-match-title">어짜피 어사될 사이</span>
+        </div>
+        <p className = "result-match-body">{worst}  </p>
+        </div>
+        </div>
+        </div>}
     </Background>
 }
 
