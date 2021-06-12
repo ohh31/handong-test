@@ -46,6 +46,7 @@ p{
     line-height: 25px;
     padding-bottom: 30px;
     align-self: center;
+    text-align: center;
   }
 
   .result-title-text{
@@ -53,27 +54,25 @@ p{
     font-weight: bold;
     font-size: 35px;
     align-self : center;
+    text-align: center;
     padding-bottom : 30px;
     line-height: 40px;
   }
 
-  .result-desc-title{
-    width : 400px;
+  .result-desc-text{
     font-weight: bold;
-    font-size: 15px;
+    font-size: 12px;
     align-self : center;
     line-height: 25px;
-    margin-bottom : 0px;
-
+    text-align: center;
   }
   
+
   .result-subtitle-text{
     width : 400px;
     font-weight: bold;
     font-size: 15px;
-    align-self : center;
     line-height: 25px;
-    margin-bottom : 0px;
     text-align :center;
   }
 
@@ -94,4 +93,18 @@ p{
 
   .hl-text{
     color: #FFA200;
+  }
+
+  .result-match-title{
+    align-self : center;
+    font-weight: bold;
+    padding-left: 10px;
+    font-size: 15px;
+  }
+
+  .result-match-body{
+    align-self : center;
+    font-weight: bold;
+    font-size: 15px;
+
   }
