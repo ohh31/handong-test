@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 function ProgressBar(props) {
     const [percent, setPercent] = useState(0);
     let term;
+
     function updateProgress(value) {
       setPercent(percent+term);
     };
@@ -12,7 +13,9 @@ function ProgressBar(props) {
     });
 
     useEffect(() => {
+      if(percent<=(100-term)){
       updateProgress(percent);
+      }
     }, [props.index]);
 
       const fillerStyles = {
