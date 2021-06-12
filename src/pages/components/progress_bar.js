@@ -1,21 +1,30 @@
 import React, { useState, useEffect } from 'react';
 
 function ProgressBar(props) {
-    const [completed, setCompleted] = useState(0);
+    const [percent, setPercent] = useState(0);
+    let term;
+    function updateProgress(value) {
+      setPercent(percent+term);
+    };
 
     useEffect(() => {
-        setCompleted(props.index);
-        console.log(completed);
-    }, [completed]);
+      term= 100/12;
+    });
+
+    useEffect(() => {
+      updateProgress(percent);
+    }, [props.index]);
 
       const fillerStyles = {
         height: '100%',
-        width: `${100*((props.index+1)/12)}%`,
+        width: `${percent}%`,
         backgroundColor: '#FFA200',
         borderRadius: 'inherit',
-        textAlign: 'right'
+        textAlign: 'right',
+        transition: '0.5s ease',
       }
    
+      
     return  <div className = "progress-container-wrapper">
         <div className = "progress-container">
     <div style={fillerStyles}>
