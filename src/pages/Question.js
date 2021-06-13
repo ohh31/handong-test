@@ -112,9 +112,10 @@ function Question(){
     //  key = {data}
     >
       <div className = "question-main-container">
+        <div className="question-title-wrap">
         <p class = "question-main-text">
         {changeNullToBr(qstDataSet[data].question)}
-        </p>
+        </p></div>
         <button className="select-btn" id = {qstDataSet[data].type + '-ans1'} className = 'select-btn' 
         onClick =  {qstDataSet.length-1 === data ? handleOnSubmit : handleInputChange}>
          {changeNullToBr(qstDataSet[data].ans1)}</button>
