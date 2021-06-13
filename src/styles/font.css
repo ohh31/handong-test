@@ -93,6 +93,14 @@ p{
       align-self : center;
     }
 
+    .final-btn-text{
+      /* font-weight: bold; */
+      font-size: 13px;
+      align-self : center;
+  
+    }
+
+
   .progress-label-text{
     padding: 5;
     font-weight: bold;
@@ -100,6 +108,7 @@ p{
     align-self : flex-end;
     margin-top : 2px;
   }
+  
   }
   
 
@@ -179,7 +188,12 @@ p{
     font-size: 20px;
     align-self : center;
   }
- 
+
+  .final-btn-text{
+    /* font-weight: bold; */
+    font-size: 15px;
+    align-self : center;
+  }
 
   .progress-label-text{
     padding: 5;
@@ -224,4 +238,9 @@ p{
     font-weight: bold;
     font-size: 13px;
     animation: fade-in 2s;
+  }
+
+  .name-text{
+    text-align: center;
+    font-size: 13px;
   }
