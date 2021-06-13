@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import '../App.css';
 import Background from "./components/background.js"
 import ProgressBar from "./components/progress_bar.js"
@@ -17,6 +17,15 @@ function Question(){
     decide : 0,
     life : 0,
   });
+
+  useEffect(() => {
+    if(showQst === false){
+    setTimeout(() => {
+      setData(prevNumber => prevNumber + 1);
+      setShowQst(true);
+  }, 300);
+}
+}, [showQst]);
 
   async function handleOnSubmit(event){
     event.preventDefault(event);
@@ -37,7 +46,7 @@ function Question(){
       ...prevState,
       [type]: ans === "ans1" ? prevState[type] + 1 : prevState[type] - 1
          }));
-    setData(prevNumber => prevNumber + 1);
+      setShowQst(false);
   };
 
   async function getFinalResult(){
@@ -93,14 +102,16 @@ function Question(){
   
 
   return <Background>
-    <ProgressBar index ={data}/>
+    <div className = "content-container">
+        <ProgressBar index ={data}/>
  <CSSTransition
      in={showQst}
      appear = {true}
      timeout={300}
-     classNames={showQst===true ? "slide-in" : "slide-out"}
-    key = {data}
-    ><div className = "content-container">
+     classNames="slide-in"
+    //  key = {data}
+    >
+      <div className = "question-main-container">
         <p class = "question-main-text">
         {changeNullToBr(qstDataSet[data].question)}
         </p>
@@ -110,8 +121,10 @@ function Question(){
         <button id = {qstDataSet[data].type + '-ans2'} className = 'select-btn' 
         onClick =  {qstDataSet.length-1 === data ? handleOnSubmit : handleInputChange}>
            {changeNullToBr(qstDataSet[data].ans2)}</button>
-        </div>
-</CSSTransition></Background>
+           </div>  
+           </CSSTransition> 
+           </div>
+</Background>
 
 }
  
