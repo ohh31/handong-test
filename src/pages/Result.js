@@ -70,18 +70,20 @@ function Result() {
       useEffect(() => {
         setTimeout(() => {
         setChecked(true);
-        },600);
+        },800);
       console.log("report");
       }, [report]);
       
-     
+     const fontStyle ={
+      color : "#FFA200"
+     }
 
     return <Background>
      {isChecked === false ? <Loading/> :
      <div className="result-main-container">
         <div className = "result-body-container">
         <p className ="result-subtitle-text">{subtitle}</p>    
-        <p className="result-title-text">{title}</p>
+        <p className="result-title-text" style ={fontStyle} >{title}</p>
         <span className = "result-desc-text">{body}  </span>
         </div>
         <div className = "result-bottom-container">
