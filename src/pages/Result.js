@@ -1,5 +1,6 @@
 
-import Background from "./components/background.js"
+import Background from "./components/background.js";
+import Loading from "./Loading";
 import {useLocation, useHistory} from 'react-router';
 import React, {useEffect, useState} from 'react';
 import { firestore } from '../firebase';
@@ -69,14 +70,14 @@ function Result() {
       useEffect(() => {
         setTimeout(() => {
         setChecked(true);
-        },500);
+        },600);
       console.log("report");
       }, [report]);
       
      
 
     return <Background>
-     {isChecked === false ?  <p>결과 분석 중</p> :
+     {isChecked === false ? <Loading/> :
      <div className="result-main-container">
         <div className = "result-body-container">
         <p className ="result-subtitle-text">{subtitle}</p>    
@@ -100,6 +101,9 @@ function Result() {
         <p className = "result-match-body">{worst}  </p>
         </div>
         </div>
+        {/* <button className="content-btn">
+        <span className="btn-text">다른 한동인들 결과보기</span>
+        </button> */}
         </div>}
     </Background>
 }
