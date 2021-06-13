@@ -88,7 +88,7 @@ function Question(){
             }
           break;
         default:
-          console.log(`no data`);
+          // console.log(`no data`);
       }
     }
     console.log(cvtType);

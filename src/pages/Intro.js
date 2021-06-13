@@ -14,7 +14,7 @@ function Intro() {
   const history = useHistory();
   let ref = firestore.collection('Result');
 
- console.log("upload");
+//  console.log("upload");
  
  useEffect(
   () => { 
