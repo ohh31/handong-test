@@ -130,9 +130,30 @@
   top: 0;
 }
 
+.loading-container{
+  display : flex;
+  flex-direction: row;
+}
+
+.loading-item{
+  border-radius : 50%;
+  width : 5px;
+  height : 5px;
+  background-color : transparent;
+  border : white 2px solid;
+  margin-left : 10px;
+  animation-name: fade-in;
+  transition: all 400ms ease-in;
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 .slide-in-appear {
   opacity: 1;
-  transform: translate(0%);
+  transform: translate(-200%);
 }
 .slide-in-appear-active{
   opacity: 1;
@@ -155,6 +176,10 @@
   transform: translateX(-200%);
 }
 
+.slide-in-exit-done {
+  opacity: 1;
+  transform: translateX(-200%);
+}
 
 @media (min-width : 375px){
   .bg{
