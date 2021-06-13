@@ -87,25 +87,17 @@ function Result() {
         <span className = "result-desc-text">{body}  </span>
         </div>
         <div className = "result-bottom-container">
-        <div className = "result-match-container">
         <div className = "result-match-wrap">
         <img src = {icon1} width = "15px"></img>
-        <span className = "result-match-title">평생 밥고할 사이</span>
+        <span className = "result-match-title"  style = {fontStyle}>나와 평생 밥고할 &nbsp; &nbsp;</span>
+        <span className = "result-match-body" >{best}</span>
         </div>
-        <p className = "result-match-body">{best}</p>
-        </div>
-        <div className = "divider"></div>
-        <div className = "result-match-container">
         <div className = "result-match-wrap">
         <img src = {icon2} width = "15px"></img>
-        <span className = "result-match-title">어짜피 어사될 사이</span>
+        <span className = "result-match-title"  style = {fontStyle}>나와 어사될 &nbsp; &nbsp;</span>
+        <span className = "result-match-body" >{worst}</span>
         </div>
-        <p className = "result-match-body">{worst}  </p>
         </div>
-        </div>
-        {/* <button className="content-btn">
-        <span className="btn-text">다른 한동인들 결과보기</span>
-        </button> */}
         </div>}
     </Background>
 }
