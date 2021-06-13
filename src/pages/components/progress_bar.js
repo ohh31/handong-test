@@ -24,7 +24,7 @@ function ProgressBar(props) {
         backgroundColor: '#FFA200',
         borderRadius: 'inherit',
         textAlign: 'right',
-        transition: '0.5s ease',
+        transition: '0.8s ease',
       }
    
       

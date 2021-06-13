@@ -109,7 +109,7 @@ function Question(){
      appear = {true}
      timeout={300}
      classNames="slide-in"
-    //  key = {data}
+     key = {data}
     >
       <div className = "question-main-container">
         <div className="question-title-wrap">

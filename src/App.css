@@ -82,15 +82,22 @@
 .question-main-container{
   display: flex;
   flex-direction: column;
-  align-items: "center";
+  align-items: center;
+  text-align: center;
   padding-top: 30px;
 }
 
+.question-title-wrap{
+  height: 100px;
+  margin-bottom: 50px;
+}
 .result-main-container{
   display: flex;
   flex-direction: column;
   width: 100%;
 }
+
+
 
 .result-body-container{
   position: relative;
@@ -142,8 +149,6 @@
   background-color : transparent;
   border : white 2px solid;
   margin-left : 10px;
-  /* animation-name: fade-in;
-  transition: all 400ms ease-in; */
   animation:animationName 0.5s 0s infinite ease-in-out alternate;	
 
 }
@@ -159,15 +164,29 @@
 
 .slide-in-appear {
   opacity: 1;
-  transform: translate(-200%);
+  transform: translate(120%);
 }
 .slide-in-appear-active{
   opacity: 1;
-  transform: translateX(200%);
+  transition: all 400ms ease;
+  transform: translateX(0%);
 }
 
 .slide-in-appear-done {
-  transition: all 400ms ease-in;
+  transform: translateX(0%);
+}
+
+.slide-in-enter {
+  opacity: 1;
+  transform: translate(120%);
+}
+.slide-in-enter-active{
+  opacity: 1;
+  transition: all 400ms ease;
+  transform: translateX(0%);
+}
+
+.slide-in-enter-done {
   transform: translateX(0%);
 }
 
@@ -178,13 +197,13 @@
 
 .slide-in-exit-active {
   opacity: 1;
-  transition: all 400ms ease-in;
-  transform: translateX(-200%);
+  transition: all 400ms ease;
+  transform: translateX(-120%);
 }
 
 .slide-in-exit-done {
   opacity: 1;
-  transform: translateX(-200%);
+  transform: translateX(-120%);
 }
 
 @media (min-width : 375px){
