@@ -10,6 +10,7 @@ import icon2 from '../styles/images/result-match-bad.png';
 
 function Result() {
     const history = useHistory();
+    const [isUpdated , setUpdated] = useState(false);
     const [isChecked, setChecked] = useState(false);
     const [finalResult, setfinalResult] = useState('');
     const [report, setReport]= useState({});
@@ -44,21 +45,33 @@ function Result() {
             }
     });}
 
-    function saveResultType(result){
-        var fieldName = `type.`+ result;
-        resultRef.doc(`fF2LVDgqIHKIjKYbrU6s`).update({
+     async function saveResultType(props){
+      console.log(3);
+
+        var fieldName = `type.`+ props;
+        await resultRef.doc(`fF2LVDgqIHKIjKYbrU6s`).update({
             totalCount : firebase.firestore.FieldValue.increment(1),
             [`${fieldName}`]: firebase.firestore.FieldValue.increment(1)
           });
-
-    }
-
+          setUpdated(true);
+        }
 
     useEffect(() => {
         let result = location.state.result;
-        if(result!= null){
+        if(result!== null){
         setfinalResult(result);
-        saveResultType(result);
+        if(window.sessionStorage.getItem("result")=== null && isUpdated === false){
+          window.sessionStorage.setItem("result", JSON.stringify(result));
+          saveResultType(result);
+          console.log(1);
+        } else if(window.sessionStorage.getItem("result" && isUpdated === true) !== result){
+          window.sessionStorage.setItem("result", JSON.stringify(result));
+          console.log(2);
+
+        } else{
+          console.log("no update");
+        }
+
         if(finalResult!==''){
             getReportData(finalResult);
         }
@@ -71,12 +84,14 @@ function Result() {
         setTimeout(() => {
         setChecked(true);
         },800);
-      console.log("report");
+      // console.log("report");
       }, [report]);
       
      const fontStyle ={
       color : "#FFA200"
      }
+
+     const name = "@ Sewon & Jeonga"
 
     return <Background>
      {isChecked === false ? <Loading/> :
@@ -94,10 +109,16 @@ function Result() {
         </div>
         <div className = "result-match-wrap">
         <img src = {icon2} width = "15px"></img>
-        <span className = "result-match-title"  style = {fontStyle}>나와 어사될 &nbsp; &nbsp;</span>
+        <span className = "result-match-title"  style = {fontStyle}>나와 평생 어사될 &nbsp; &nbsp;</span>
         <span className = "result-match-body" >{worst}</span>
         </div>
         </div>
+        <button className="final-btn" onClick={()=>   setTimeout(() => {
+          alert('[서비스 준비중] \n 500명이 넘을 경우 공개할 예정입니다 :)');
+      }, 300)} >
+        <span className="final-btn-text">한동 전체 mbti 순위보기</span>
+        </button>
+        <span className="name-text">{name}</span>
         </div>}
     </Background>
 }
