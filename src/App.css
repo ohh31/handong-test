@@ -1,7 +1,10 @@
+
+
 *{
   font-family: 'Cafe24SsurroundAir';
 }
 
+@media all and (min-width:410px){
 .main-container{
   position: absolute;
   background: #302654;
@@ -14,23 +17,21 @@
 
 .main-container-inner{
   position: relative;
-  max-width : 400px;
-  max-height: 100%;
+  min-width : 410px;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  /* padding-left: 20px;
+  padding-right: 20px; */
   padding-top: 50px;
   padding-bottom: 18px;
 }
 
-.content-container{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 50px;
+
+.question-title-wrap{
+  height: 100px;
+  margin-bottom: 30px;
 }
 
 .content-btn{
@@ -44,10 +45,6 @@
   border : solid white 2px;
 }
 
-.content-btn:active{
-  background-color: white;
-  color: #302654;
-} 
 
 .select-btn{
   background-color : transparent;
@@ -61,23 +58,105 @@
   margin-bottom : 35px;
   line-height: 20px;
 }
+
+.progress-container{
+height: 15px;
+width: 300px;
+background-color: transparent;
+border : #e0e0de solid 2px;
+border-radius: 50px;
+}
+
+
+}
+
+
+@media all and (max-width:410px){
+  .main-container{
+    position: absolute;
+    background: #302654;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content : center;
+    overflow: hidden scroll;
+  }
+  
+  .main-container-inner{
+    position: relative;
+    max-width : 350px;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden auto;
+    padding-top: 50px;
+    padding-bottom: 18px;
+  }
+
+
+.question-title-wrap{
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.content-btn{
+  border-radius: 15px;
+  background-color: transparent;
+  width: 186px;
+  height: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border : solid white 2px;
+}
+
+.select-btn{
+  background-color : transparent;
+  color : white;
+  border : solid white 2px;
+  font-weight: bold;
+  font-size: 12px;
+  align-self: center;
+  height : 80px;
+  width : 250px;
+  margin-bottom : 35px;
+  line-height: 20px;
+}
+
+.progress-container{
+height: 12px;
+width: 250px;
+background-color: transparent;
+border : #e0e0de solid 2px;
+border-radius: 50px;
+}
+  }
+
+.content-btn:active{
+  background-color: white;
+  color: #302654;
+} 
+
 .select-btn:active{
   background-color: white;
 }
 
+
 .progress-container-wrapper{
-        display: flex;
-        flex-direction: column;
-        align-items: "center";
+  display: flex;
+  flex-direction: column;
+  align-items: "center";
 }
 
-.progress-container{
-  height: 15px;
-  width: 300px;
-  background-color: transparent;
-  border : #e0e0de solid 2px;
-  border-radius: 50px;
+
+.content-container{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
 }
+
 
 .question-main-container{
   display: flex;
@@ -87,17 +166,14 @@
   padding-top: 30px;
 }
 
-.question-title-wrap{
-  height: 100px;
-  margin-bottom: 50px;
-}
+
+
 .result-main-container{
   display: flex;
   flex-direction: column;
-  width: 100%;
+  align-self: center;
+
 }
-
-
 
 .result-body-container{
   position: relative;
@@ -105,14 +181,20 @@
   margin-top: 40px;
   margin-bottom:80px;
   padding-top: 0px;
-}
+  width: 300px;
+  align-self: center;
+  margin-left: 24px;
+  margin-right: 24px;
 
+}
 
 .result-bottom-container{
   display: flex;
   flex-direction: row;
-  margin: 0px;
+  margin-left: 40px;
+  margin-right: 40px;
   padding: 0px;
+
 }
 
 .result-match-container{
@@ -121,6 +203,7 @@
   align-items: center;
   width: 50%;
   margin-bottom:70px;
+
 }
 
 .result-match-wrap{
@@ -132,7 +215,8 @@
   position: relative;
   border-left: 2px solid white;
   height: 60px;
-  margin-left: -3px;
+  margin-right: 7px;
+  margin-left: 7px;
   opacity: 0.33;
   top: 0;
 }
@@ -155,6 +239,8 @@
 
 .loading-item:nth-child(2){animation-delay: 0.2s; background: CadetBlue ;}
 .loading-item:nth-child(3){animation-delay: 0.3s; background: HotPink  ;}
+
+
 
 @keyframes animationName {
   0%{margin-top: 0px ;}
@@ -206,24 +292,32 @@
   transform: translateX(-120%);
 }
 
-@media (min-width : 375px){
+
+
+@media (max-width : 400px ){
+  .result-desc-text{
+    font-weight: bold;
+    font-size: 5px;
+    align-self : center;
+    line-height: 25px;
+    text-align: center;
+    animation: fade-in 2s;
+    padding-left: 10px;
+  }
   .bg{
-    width : 375px;
-    height : 667px;
+    width : 320px;
   }
 }
 
 @media (min-width : 1152px){
   .bg{
     width : 379px;
-    height : 298px;
   }
 }
 
 @media (min-width : 1024px){
   .bg{
     width : 700px;
-    height : 800px;
   }
 }
 
