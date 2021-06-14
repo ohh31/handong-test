@@ -7,7 +7,6 @@ import { firestore } from '../firebase';
 import firebase from 'firebase/app';
 import icon1 from '../styles/images/result-match-good.png';
 import icon2 from '../styles/images/result-match-bad.png';
-import resultData from '../resultData';
 
 
 function Result() {
@@ -21,7 +20,6 @@ function Result() {
     const { title, subtitle, body, best, worst } = report;
     let location = useLocation();
     
-    const resultDataSet = resultData;
 
     function changeNullToBr(value){
       return value.replaceAll("\\n", "\n" ).split("\n").map((line) => { 
@@ -36,7 +34,8 @@ function Result() {
 
     async function getReportData(type){
      
-      if(indow.sessionStorage.getItem("title")=== null){
+      if(window.sessionStorage.getItem("title")=== null){
+       
         reportRef.doc(type).get().then((doc) => {
             if (doc.exists) {
               let currentTitle = changeNullToBr(doc.data().title);
@@ -64,7 +63,7 @@ function Result() {
     setReport(
       {
        title : window.sessionStorage.getItem("title"),
-       subtitle : window.sessionStorage.getItem("title"),
+       subtitle : window.sessionStorage.getItem("subtitle"),
        body : window.sessionStorage.getItem("body"),
          best : window.sessionStorage.getItem("best"),
          worst : window.sessionStorage.getItem("worst"),
@@ -92,6 +91,11 @@ function Result() {
           saveResultType(result);
         } else if(window.sessionStorage.getItem("result" && isUpdated === true) !== result){
           window.sessionStorage.setItem("result", JSON.stringify(result));
+          window.sessionStorage.removeItem("title");
+          window.sessionStorage.removeItem("subtitle");
+          window.sessionStorage.removeItem("body");
+          window.sessionStorage.removeItem("best");
+          window.sessionStorage.removeItem("worst");
         } else{
           console.log("no update");
         }
