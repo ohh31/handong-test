@@ -39,13 +39,15 @@ function Question(){
 
   function handleInputChange (event){
     event.preventDefault(event);
-    const value = event.target.id.split("-");
+    const value = event.currentTarget.id.split("-");
      const type = value[0];
      const ans = value[1];
      setState((prevState) => ({
       ...prevState,
       [type]: ans === "ans1" ? prevState[type] + 1 : prevState[type] - 1
          }));
+      // console.log(value);
+      // console.log(type + ":" + ans);
       setShowQst(false);
   };
 
