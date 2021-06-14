@@ -114,7 +114,7 @@ function Result() {
         </div>
         </div>
         <button className="final-btn" onClick={()=>   setTimeout(() => {
-          alert('[서비스 준비중] \n 500명이 넘을 경우 공개할 예정입니다 :)');
+          alert('정확한 집계를 위해 \n 6월 19일 공개할 예정입니다 :)');
       }, 300)} >
         <span className="final-btn-text">한동 전체 mbti 순위보기</span>
         </button>
