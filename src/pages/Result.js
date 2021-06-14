@@ -7,6 +7,8 @@ import { firestore } from '../firebase';
 import firebase from 'firebase/app';
 import icon1 from '../styles/images/result-match-good.png';
 import icon2 from '../styles/images/result-match-bad.png';
+import resultData from '../resultData';
+
 
 function Result() {
     const history = useHistory();
@@ -18,6 +20,8 @@ function Result() {
     let reportRef = firestore.collection('Report');
     const { title, subtitle, body, best, worst } = report;
     let location = useLocation();
+    
+    const resultDataSet = resultData;
 
     function changeNullToBr(value){
       return value.replaceAll("\\n", "\n" ).split("\n").map((line) => { 
@@ -31,22 +35,45 @@ function Result() {
     }
 
     async function getReportData(type){
+     
+      if(indow.sessionStorage.getItem("title")=== null){
         reportRef.doc(type).get().then((doc) => {
             if (doc.exists) {
+              let currentTitle = changeNullToBr(doc.data().title);
+              let currentSubtitle = changeNullToBr(doc.data().subtitle);
+              let currentBody = changeNullToBr(doc.data().body);
+              let currentBest =  doc.data().best;
+              let currentWorst = doc.data().worst;
                 setReport(
                {
-                title : changeNullToBr(doc.data().title),
-                subtitle : changeNullToBr(doc.data().subtitle),
-                body : changeNullToBr(doc.data().body),
-                  best : doc.data().best,
-                  worst : doc.data().worst
+                title : currentTitle,
+                subtitle : currentSubtitle,
+                body : currentBody,
+                  best : currentBest,
+                  worst : currentWorst,
                }
-                );   
+                );  
+                window.sessionStorage.setItem("title", JSON.stringify(currentTitle));
+                window.sessionStorage.setItem("subtitle", JSON.stringify(currentSubtitle));
+                window.sessionStorage.setItem("body", JSON.stringify(currentBody));
+                window.sessionStorage.setItem("best", JSON.stringify(currentBest));
+                window.sessionStorage.setItem("worst", JSON.stringify(currentWorst));
             }
-    });}
+    });
+  } else{
+    setReport(
+      {
+       title : window.sessionStorage.getItem("title"),
+       subtitle : window.sessionStorage.getItem("title"),
+       body : window.sessionStorage.getItem("body"),
+         best : window.sessionStorage.getItem("best"),
+         worst : window.sessionStorage.getItem("worst"),
+      }
+       );  
+  }
+}
 
      async function saveResultType(props){
-      console.log(3);
 
         var fieldName = `type.`+ props;
         await resultRef.doc(`fF2LVDgqIHKIjKYbrU6s`).update({
@@ -63,11 +90,8 @@ function Result() {
         if(window.sessionStorage.getItem("result")=== null && isUpdated === false){
           window.sessionStorage.setItem("result", JSON.stringify(result));
           saveResultType(result);
-          console.log(1);
         } else if(window.sessionStorage.getItem("result" && isUpdated === true) !== result){
           window.sessionStorage.setItem("result", JSON.stringify(result));
-          console.log(2);
-
         } else{
           console.log("no update");
         }
