@@ -35,36 +35,36 @@ function Result() {
     async function getReportData(type){
      
       if(window.sessionStorage.getItem("title")=== null){
-       
         reportRef.doc(type).get().then((doc) => {
             if (doc.exists) {
-              let currentTitle = changeNullToBr(doc.data().title);
-              let currentSubtitle = changeNullToBr(doc.data().subtitle);
-              let currentBody = changeNullToBr(doc.data().body);
-              let currentBest =  doc.data().best;
-              let currentWorst = doc.data().worst;
+              const currentTitle = doc.data().title;
+              const currentSubtitle = doc.data().subtitle;
+              const currentBody = doc.data().body;
+              const currentBest =  doc.data().best;
+              const currentWorst = doc.data().worst;
                 setReport(
                {
-                title : currentTitle,
-                subtitle : currentSubtitle,
-                body : currentBody,
+                title : changeNullToBr(currentTitle),
+                subtitle : changeNullToBr(currentSubtitle),
+                body : changeNullToBr(currentBody),
                   best : currentBest,
                   worst : currentWorst,
                }
                 );  
-                window.sessionStorage.setItem("title", JSON.stringify(currentTitle));
-                window.sessionStorage.setItem("subtitle", JSON.stringify(currentSubtitle));
+                window.sessionStorage.setItem("title", JSON.stringify(currentTitle.replaceAll("\\n", "\n" )));
+                window.sessionStorage.setItem("subtitle", JSON.stringify(currentSubtitle.replaceAll("\\n", "\n" )));
                 window.sessionStorage.setItem("body", JSON.stringify(currentBody));
                 window.sessionStorage.setItem("best", JSON.stringify(currentBest));
                 window.sessionStorage.setItem("worst", JSON.stringify(currentWorst));
             }
     });
   } else{
+  
     setReport(
       {
-       title : window.sessionStorage.getItem("title"),
-       subtitle : window.sessionStorage.getItem("subtitle"),
-       body : window.sessionStorage.getItem("body"),
+       title : changeNullToBr(window.sessionStorage.getItem("title")),
+       subtitle : changeNullToBr(window.sessionStorage.getItem("subtitle")),
+       body : changeNullToBr(window.sessionStorage.getItem("body")),
          best : window.sessionStorage.getItem("best"),
          worst : window.sessionStorage.getItem("worst"),
       }
@@ -84,18 +84,15 @@ function Result() {
 
     useEffect(() => {
         let result = location.state.result;
+        let resultTostring = "\"" + result + "\""
         if(result!== null){
         setfinalResult(result);
         if(window.sessionStorage.getItem("result")=== null && isUpdated === false){
           window.sessionStorage.setItem("result", JSON.stringify(result));
           saveResultType(result);
-        } else if(window.sessionStorage.getItem("result" && isUpdated === true) !== result){
+        } else if(window.sessionStorage.getItem("result") !== resultTostring&& isUpdated === false){
+          window.sessionStorage.clear();
           window.sessionStorage.setItem("result", JSON.stringify(result));
-          window.sessionStorage.removeItem("title");
-          window.sessionStorage.removeItem("subtitle");
-          window.sessionStorage.removeItem("body");
-          window.sessionStorage.removeItem("best");
-          window.sessionStorage.removeItem("worst");
         } else{
           console.log("no update");
         }
