@@ -1,246 +1,228 @@
 @font-face {
-    font-family: 'Cafe24SsurroundAir';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'Cafe24Ssurround';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-  }
-
-span{
-    color: #FFFFFF;
+  font-family: "Cafe24SsurroundAir";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Cafe24Ssurround";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
-p{
-    color: #FFFFFF;
+span {
+  color: #ffffff;
 }
 
+p {
+  color: #ffffff;
+}
 
-  @media all and (max-width:390px){
+@media all and (max-width: 390px) {
+  .content-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 68px;
+    margin-left: 24px;
+    margin-right: 24px;
+    padding-top: 60px;
+  }
 
-    .content-title{
-      font-size: 28px;
-      font-weight: bold; 
-      margin-bottom: 68px;
-      margin-left: 24px;
-      margin-right: 24px;
-      padding-top: 60px;
-    }
-    
-    .content-desc-text{
-      padding-top : 20px;
-      font-size: 12px;
-      font-weight: bold;
-    
-    }
-    
-    .desc-main-text{
-      padding-top: 60px;
+  .content-desc-text {
+    padding-top: 20px;
+    font-size: 12px;
+    font-weight: bold;
+  }
 
-      font-size: 16px; 
-      line-height : 150%;
-      padding-bottom : 35px;
-      font-weight: bold; 
-      margin-left: 24px;
-      margin-right: 24px;
-    }
-    
-    .question-main-text{
-      font-size: 16px;
-      font-weight: bold;
-      line-height: 25px;
-      align-self: center;
-      text-align: center; 
-  
-    }
-    .result-title-text {
-      color : #FFA200!important;
-      font-weight: bold;
-      font-size: 25px;
-      align-self : center;
-      text-align: center;
-      padding-bottom : 30px;
-      line-height: 40px;
-      /* opacity: 0px; */
-      animation: fade-in 2s;
-    }
-  
-    .result-desc-text{
-      font-weight: bold;
-      font-size: 10px;
-      align-self : center;
-      line-height: 25px;
-      text-align: center;
-      animation: fade-in 2s;
-    }
-    
-  
-    .result-subtitle-text{
-      font-weight: bold;
-      font-size: 13px;
-      line-height: 25px;
-      text-align :center;
-      animation: fade-in 2s;
-      animation-delay: 0s;
-    }
-    .btn-text{
-      font-weight: bold;
-      font-size: 18px;
-      align-self : center;
-    }
+  .desc-main-text {
+    padding-top: 60px;
 
-    .final-btn-text{
-      /* font-weight: bold; */
-      font-size: 13px;
-      align-self : center;
-  
-    }
+    font-size: 16px;
+    line-height: 150%;
+    padding-bottom: 35px;
+    font-weight: bold;
+    margin-left: 24px;
+    margin-right: 24px;
+  }
 
+  .question-main-text {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 25px;
+    align-self: center;
+    text-align: center;
+  }
+  .result-title-text {
+    color: #ffa200 !important;
+    font-weight: bold;
+    font-size: 25px;
+    align-self: center;
+    text-align: center;
+    padding-bottom: 30px;
+    line-height: 40px;
+    /* opacity: 0px; */
+    animation: fade-in 2s;
+  }
 
-  .progress-label-text{
+  .result-desc-text {
+    font-weight: bold;
+    font-size: 10px;
+    align-self: center;
+    line-height: 25px;
+    text-align: center;
+    animation: fade-in 2s;
+  }
+
+  .result-subtitle-text {
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 25px;
+    text-align: center;
+    animation: fade-in 2s;
+    animation-delay: 0s;
+  }
+  .btn-text {
+    font-weight: bold;
+    font-size: 18px;
+    align-self: center;
+  }
+
+  .final-btn-text {
+    /* font-weight: bold; */
+    font-size: 13px;
+    align-self: center;
+  }
+
+  .progress-label-text {
     padding: 5;
     font-weight: bold;
-    font-size : 10px;
-    align-self : flex-end;
-    margin-top : 2px;
+    font-size: 10px;
+    align-self: flex-end;
+    margin-top: 2px;
   }
-  
+}
+
+@media all and (min-width: 390px) {
+  .content-title {
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: 68px;
+    margin-left: 24px;
+    margin-right: 24px;
+    padding-top: 80px;
   }
-  
 
+  .content-desc-text {
+    padding-top: 20px;
+    font-size: 13px;
+    font-weight: bold;
+  }
 
-  @media all and (min-width:390px){
+  .desc-main-text {
+    padding-top: 80px;
 
-    .content-title{
-      font-size: 35px;
-      font-weight: bold; 
-      margin-bottom: 68px;
-      margin-left: 24px;
-      margin-right: 24px;
-      padding-top : 80px;
+    font-size: 20px;
+    line-height: 140%;
+    padding-bottom: 35px;
+    font-weight: bold;
+    margin-left: 24px;
+    margin-right: 24px;
+  }
 
-    }
-    
-    .content-desc-text{
-      padding-top : 20px;
-      font-size: 13px;
-      font-weight: bold;
-    
-    }
-    
-    .desc-main-text{
-      padding-top : 80px;
-
-      font-size: 20px; 
-      line-height : 140%;
-      padding-bottom : 35px;
-      font-weight: bold; 
-      margin-left: 24px;
-      margin-right: 24px;
-    }
-    
-    .question-main-text{
-      font-size: 18px;
-      font-weight: bold;
-      line-height: 25px;
-      align-self: center;
-      text-align: center; 
-  
-    }
+  .question-main-text {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 25px;
+    align-self: center;
+    text-align: center;
+  }
 
   .result-title-text {
-    color : #FFA200!important;
+    color: #ffa200 !important;
     font-weight: bold;
     font-size: 35px;
-    align-self : center;
+    align-self: center;
     text-align: center;
-    padding-bottom : 30px;
+    padding-bottom: 30px;
     line-height: 40px;
     animation: fade-in 2s;
   }
 
-  .result-desc-text{
+  .result-desc-text {
     font-weight: bold;
     font-size: 12px;
-    align-self : center;
+    align-self: center;
     line-height: 25px;
     text-align: center;
     animation: fade-in 2s;
     overflow: auto;
   }
-  
 
-  .result-subtitle-text{
+  .result-subtitle-text {
     font-weight: bold;
     font-size: 15px;
     line-height: 25px;
-    text-align :center;
+    text-align: center;
     align-self: center;
     animation: fade-in 2s;
     animation-delay: 0s;
   }
-  .btn-text{
+  .btn-text {
     font-weight: bold;
     font-size: 20px;
-    align-self : center;
+    align-self: center;
   }
 
-  .final-btn-text{
+  .final-btn-text {
     /* font-weight: bold; */
     font-size: 15px;
-    align-self : center;
+    align-self: center;
   }
 
-  .progress-label-text{
+  .progress-label-text {
     padding: 5;
     font-weight: bold;
-    font-size : 13px;
-    align-self : flex-end;
-    margin-top : 2px;
+    font-size: 13px;
+    align-self: flex-end;
+    margin-top: 2px;
   }
-
 }
 
-  
-  @keyframes fade-in {
-    from {
-      opacity:0;
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
   to {
-      opacity:1;
+    opacity: 1;
   }
-  }
+}
 
- 
+.hl-text {
+  color: #ffa200;
+}
 
+.result-match-title {
+  align-self: center;
+  text-align: center;
+  font-weight: bold;
+  padding-left: 8px;
+  font-size: 13px;
+  animation: fade-in 2s;
+}
 
-  .hl-text{
-    color: #FFA200;
-  }
+.result-match-body {
+  align-self: center;
+  text-align: center;
 
-  .result-match-title{
-    align-self : center;
-    text-align: center;
-    font-weight: bold;
-    padding-left: 8px;
-    font-size: 13px;
-    animation: fade-in 2s;
-  }
+  font-weight: bold;
+  font-size: 13px;
+  animation: fade-in 2s;
+}
 
-  .result-match-body{
-    align-self : center;
-    text-align: center;
-
-    font-weight: bold;
-    font-size: 13px;
-    animation: fade-in 2s;
-  }
-
-  .name-text{
-    text-align: center;
-    font-size: 13px;
-  }
+.name-text {
+  text-align: center;
+  font-size: 13px;
+}

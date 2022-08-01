@@ -6,17 +6,16 @@ import Question from "./pages/Question";
 import Result from "./pages/Result";
 import TotalResult from "./pages/TotalResult";
 
-function App () {
-   return (
-     <div>
-    <Route path="/" component={Intro} />
-    <Route path="/desc" component={Desc} />
-    <Route path="/question" component={Question} />
-    <Route path="/result" component={Result} />
-    <Route path="/total-result" component={TotalResult} />
+function App() {
+  return (
+    <div>
+      <Route path="/" component={Intro} />
+      <Route path="/desc" component={Desc} />
+      <Route path="/question" component={Question} />
+      <Route path="/result" component={Result} />
+      <Route path="/total-result" component={TotalResult} />
     </div>
   );
 }
-
 
 export default App;
